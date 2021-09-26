@@ -13,7 +13,7 @@ one which uses a Taylor-polynomial and the other uses two quadratic polynomials.
 - Meson Buildsystem
 - make, ninja, etc.
 
-*NOTE*: meson generates buildfiles for a other buildsystem such as ninja.
+**NOTE**: meson generates buildfiles for a other buildsystem such as ninja.
 I recommand taking a look at which systems meson supports.
 
 ## quick start
@@ -25,4 +25,4 @@ $ meson setup src build
 $ meson test -C build
 ```
 
-*NOTE*: testlogs can be found in $./build/meson-logs/$ relative to the projects root.
+**NOTE**: testlogs can be found in `./build/meson-logs/` relative to the projects root.
