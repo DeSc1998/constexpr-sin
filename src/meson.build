@@ -1,7 +1,7 @@
 
 project('desc compiler', 'cpp',
             default_options : [
-                'cpp_std=c++2a',
+                'cpp_std=c++20',
                 'warning_level=3', 'werror=true'],
             version : 'alpha 0.1')
 
@@ -32,3 +32,14 @@ exe_debug = executable('float_mod_debug',
 
 test( 'test run', exe,
       args : [ ] )
+
+exe2 = executable(
+    'speed_check',
+    'speed_check.cpp',
+    override_options : ['buildtype=release']
+)
+
+test(
+    'speed test against std',
+    exe2
+)
