@@ -16,14 +16,17 @@ constexpr auto sum_to( std::size_t n ) {
 }
 
 auto main( ) -> int {
+  hpc::rep ver_constexpr = { }, ver_std = { };
+
   auto start = hpc::now( );
   for ( int i = 0; i < 10'000; ++i ) {
     static constexpr auto value = sum_to( 1'000 );
     // std::cout << value << '\n';
     (void)value;
   }
-  auto end = hpc::now( );
-  std::cout << "constexpr: " << ( end - start ).count( ) << " ns\n\n";
+  auto end      = hpc::now( );
+  ver_constexpr = ( end - start ).count( );
+  std::cout << "constexpr: " << ver_constexpr << " ns\n";
 
   auto sum = 0.0L;
   start    = hpc::now( );
@@ -32,6 +35,11 @@ auto main( ) -> int {
   }
   (void)sum;
   // std::cout << sum << '\n';
-  end = hpc::now( );
-  std::cout << "standard: " << ( end - start ).count( ) << " ns\n\n";
+  end     = hpc::now( );
+  ver_std = ( end - start ).count( );
+  std::cout << "standard: " << ver_std << " ns\n\n";
+
+  float ratio = (float)ver_std / (float)ver_constexpr;
+  std::cout << " -- relative speed --\n"
+            << "constexpr: " << 1 << "\nstandard: " << ratio;
 }

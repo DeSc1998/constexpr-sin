@@ -17,7 +17,11 @@ namespace ds {
     return x - factor * base;
   }
 
-  constexpr uint64_t fac( uint64_t x ) { return x > 1 ? x * fac( x - 1 ) : 1; }
+  constexpr uint64_t fac_tail( uint64_t x, uint64_t sum ) {
+    return x < 2 ? sum : fac_tail( x - 1, sum * x );
+  }
+
+  constexpr uint64_t fac( uint64_t x ) { return fac_tail( x, 1 ); }
 
   template < uint64_t >
   struct Fac;
@@ -53,7 +57,7 @@ namespace ds {
     return result;
   }
 
-  template < uint64_t N, bool = !( N & 1 ) >
+  template < uint64_t N, bool = !( N & 1 ) > // N % 2 == 0
   struct Term;
 
   template < uint64_t N >

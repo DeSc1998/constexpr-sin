@@ -1,5 +1,5 @@
 
-project('desc compiler', 'cpp',
+project('constexpr sin', 'cpp',
             default_options : [
                 'cpp_std=c++20',
                 'warning_level=3', 'werror=true'],
