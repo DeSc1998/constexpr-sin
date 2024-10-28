@@ -27,7 +27,7 @@ jobs:
         CXX: ${{ env.LLVM_PATH }}/bin/clang++
     - name: Build and Test
       run: meson test -C build/ -v
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       if: failure()
       with:
         name: Linux_Meson_Testlog
