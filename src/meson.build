@@ -11,7 +11,7 @@ src_files = [ 'main.cpp' ]
 
 analyze_cmd = [ 'clang++' ]
 analyze_cmd += [
-            '-I', meson.source_root(),
+            '-I', meson.global_source_root(),
             '-Wall', '-Wextra', '-Wshadow', '-Wpedantic',
             '-std=c++20',
             '--analyze', '-fsanitize=address,undefined'
